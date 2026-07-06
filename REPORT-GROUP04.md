@@ -158,3 +158,36 @@ Nhóm 04 đã tạo **242 test cases**, bao phủ 9 Feature Requirement, một p
 Trong 204 TC đã có kết luận, **136 Passed** và **68 Failed**, tương ứng pass rate 66,7%. Ngoài ra còn 18 TC thiếu oracle và 20 TC chưa chạy/cập nhật trạng thái.
 
 Ba thành viên ghi nhận tổng cộng **32 bug records**: Long 8, Thịnh 20 và Thiện 4. Severity gồm 6 Critical, 16 High và 10 Medium. Vì tồn tại nhiều phát hiện trùng hành vi giữa thành viên, 32 là tổng attribution record; cần canonical hóa trước khi công bố số product defect unique toàn nhóm.
+
+## 11. Bổ sung từ bài Domain Testing của Thiện (đợt HW02)
+
+Theo file bổ sung `23127482_HW02_AI_DomainTesting_100/MainReport.md` và `README.md`, Thiện có thêm một bộ độc lập gồm:
+
+- 4 feature (FR-01, FR-07, FR-12, FR-MOB)
+- 57 test case thiết kế
+- 38 test case đã thực thi
+- 28 Pass, 10 Failed, 19 Not executed
+- 10 bug chính thức trong execution sheet
+
+Ảnh issue tracker của cùng bộ cho thấy **13 issue đang mở** (nhiều hơn số bug chính thức), nên các issue vượt chênh được xem là `candidate/pending triage` cho đến khi đồng bộ execution table.
+
+### 11.1 Kịch bản cộng dồn (không ghi đè mục 2-10)
+
+Nếu tính bài HW02 là phần **bổ sung thêm** (artifact độc lập) thay vì thay thế dữ liệu cũ của Thiện, thì số liệu nhóm tạm thời như sau:
+
+| Chỉ số nhóm (cộng dồn) | Giá trị |
+|---|---:|
+| Tổng TC inventory | **299** |
+| Passed | **164** |
+| Failed | **78** |
+| Executed - oracle pending | **18** |
+| Not Run / Not executed | **39** |
+| Bug records chính thức | **42** |
+
+Trong kịch bản cộng dồn này, pass rate trên các TC đã có kết luận Pass/Fail là **164 / (164 + 78) = 67,8%**.
+
+### 11.2 Khuyến nghị chuẩn hóa trước khi chốt báo cáo cuối
+
+- Chốt một mốc dữ liệu duy nhất cho Thiện: `baseline cũ` hoặc `baseline + HW02`.
+- Tạo canonical bug registry để hợp nhất 10 bug chính thức và 13 issue mở theo cùng một hệ ID.
+- Sau khi chốt baseline, cập nhật lại các bảng ở mục 2, 5, 6, 7, 8 để tránh tồn tại hai hệ số liệu song song.

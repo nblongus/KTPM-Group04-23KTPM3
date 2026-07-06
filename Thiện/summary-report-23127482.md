@@ -1,95 +1,90 @@
-# Báo Cáo Tổng Hợp Kiểm Thử
+# Báo Cáo Tổng Hợp Kiểm Thử - 23127482 (Bổ sung từ bài Domain Testing)
 
-Tài liệu này tổng hợp kết quả thiết kế, testcase và bug report từ 3 bộ tài liệu:
+Tài liệu này cập nhật phần báo cáo cá nhân dựa trên bài Domain Testing đính kèm `23127482_HW02_AI_DomainTesting_100`.
 
-- [FR-09: Mã Giảm Giá](testdesign.md) / [testcase.md](testcase.md)
-- [FR-10: Trạng Thái Đơn Hàng](fr10-order-state-machine/design-analysis.md)
-- [FR-03: Quên mật khẩu & Đặt lại mật khẩu](fr03-usecase-testing/design-analysis.md)
+Nguồn tổng hợp:
+
+- `MainReport.md` / `README.md` (số liệu chính thức)
+- Ảnh issue tracker (13 issue đang mở, phục vụ đối soát bug candidate)
 
 ## 1. Tổng Quan
 
 | Chỉ số | Giá trị |
 | --- | ---: |
-| Tổng cộng số testcase | 25 |
-| Số feature / requirement được bao phủ | 3 |
-| Số kỹ thuật thiết kế được sử dụng | 3 |
-| Tổng số bug phát hiện | 4 |
+| Tổng cộng số testcase thiết kế | 57 |
+| Số testcase đã thực thi | 38 |
+| Số testcase Pass | 28 |
+| Số testcase Failed | 10 |
+| Số testcase Not executed | 19 |
+| Số feature / requirement được bao phủ | 4 |
+| Tổng số bug chính thức | 10 |
 
 ## 2. Coverage Của Testcase
 
-### 2.1 Coverage theo Feature / Requirement / Technique
+### 2.1 Coverage theo Feature / Requirement
 
-| Feature | Requirement | Kỹ thuật thiết kế | Số testcase | Tỷ lệ trên tổng tc |
-| --- | --- | --- | ---: | ---: |
-| FR-09 - Mã Giảm Giá | FR-09 | Bảng Quyết Định + Pairwise | 11 | 44% |
-| FR-10 - Trạng Thái Đơn Hàng | FR-10 | State Transition Testing | 8 | 32% |
-| FR-03 - Quên mật khẩu & Đặt lại mật khẩu | FR-03 | Use Case Testing | 6 | 24% |
+| Feature | Requirement | Số testcase | Tỷ lệ trên tổng 57 TC |
+| --- | --- | ---: | ---: |
+| Pool A - Account Registration | FR-01 | 20 | 35.1% |
+| Pool B - Shopping Cart | FR-07 | 15 | 26.3% |
+| Pool C - Access Control | FR-12 | 10 | 17.5% |
+| Pool D - Mobile Registration | FR-MOB | 12 | 21.1% |
 
-### 2.2 Coverage theo Requirement
+### 2.2 Coverage theo Kỹ Thuật Thiết Kế
 
-| Requirement | Nội dung | Số testcase | Ghi chú |
-| --- | --- | ---: | --- |
-| FR-09 | Mã Giảm Giá | 11 | Có testcase cho luồng thành công và các nhánh lỗi chính |
-| FR-10 | Trạng Thái Đơn Hàng | 8 | Bao phủ đủ chuyển đổi hợp lệ và chuyển đổi không hợp lệ |
-| FR-03 | Quên mật khẩu & Đặt lại mật khẩu | 6 | Bao phủ luồng chính và các luồng thay thế quan trọng |
-
-### 2.3 Coverage theo Kỹ Thuật Thiết Kế
-
-| Kỹ thuật | Feature áp dụng | Số testcase | Ghi chú |
-| --- | --- | ---: | --- |
-| Decision Table + Pairwise | FR-09 | 11 | Có rút gọn logic và tổ hợp cặp |
-| State Transition Testing | FR-10 | 8 | Dựa trên state machine của đơn hàng |
-| Use Case Testing | FR-03 | 6 | Dựa trên luồng 2 bước và các luồng thay thế |
+| Kỹ thuật | Feature áp dụng | Quy mô |
+| --- | --- | --- |
+| Domain Testing (EP) | FR-01, FR-07, FR-12, FR-MOB | Kỹ thuật chủ lực cho toàn bộ suite |
+| Boundary Value Analysis | FR-01, FR-07, FR-12, FR-MOB | 3-point boundary cho password/quantity/token-expiry |
 
 ## 3. Status Của Testcase
 
-### 3.1 Tổng hợp trạng thái
+### 3.1 Tổng hợp trạng thái (theo Summary chính thức)
 
 | Trạng thái | Số lượng |
 | --- | ---: |
-| Pass | 9 |
-| Failed | 4 |
-| Not executed | 12 |
-| Tổng cộng | 25 |
+| Pass | 28 |
+| Failed | 10 |
+| Not executed | 19 |
+| Tổng cộng | 57 |
 
-### 3.2 Ghi chú về trạng thái
+### 3.2 Phân bổ trạng thái theo feature
 
-- FR-09 có trạng thái được ghi trực tiếp trong [testcase.md](testcase.md): 9 Pass, 2 Failed.
-- FR-03 và FR-10 có testcase markdown riêng trong các folder chuyên biệt; các bug report đã xác nhận 4 testcase thất bại tương ứng.
-- 12 testcase còn lại trong FR-03 và FR-10 chưa được cập nhật trạng thái Pass/Failed trong file testcase, nên được giữ là Not executed.
+| Feature | Designed | Executed | Pass | Failed | Not executed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| FR-01 | 20 | 20 | 12 | 8 | 0 |
+| FR-07 | 15 | 8 | 6 | 2 | 7 |
+| FR-12 | 10 | 10 | 10 | 0 | 0 |
+| FR-MOB | 12 | 0 | 0 | 0 | 12 |
+| **Tổng** | **57** | **38** | **28** | **10** | **19** |
+
+Ghi chú: ảnh issue tracker đang có thêm các issue mobile và một số case ngoài số liệu chính thức. Các issue này được ghi nhận ở trạng thái `candidate/pending triage` cho đến khi đồng bộ lại execution sheet.
 
 ## 4. Tổng Hợp Bug
 
-### 4.1 Số lượng bug theo feature / requirement
+### 4.1 Số lượng bug theo feature (chính thức)
 
-| Feature | Requirement | Số bug | Bug IDs |
-| --- | --- | ---: | --- |
-| FR-09 - Mã Giảm Giá | FR-09 | 0 | - |
-| FR-10 - Trạng Thái Đơn Hàng | FR-10 | 2 | BUG-01 (TC-06), BUG-02 (TC-08) |
-| FR-03 - Quên mật khẩu & Đặt lại mật khẩu | FR-03 | 2 | BUG-01 (TC-01), BUG-02 (TC-06) |
-
-### 4.2 Coverage của bug theo severity
-
-| Severity | Số bug | Ghi chú |
+| Feature | Số bug chính thức | Ghi chú |
 | --- | ---: | --- |
-| High | 3 | Gồm 2 bug FR-10 và 1 bug FR-03 về mật khẩu yếu |
-| Medium | 1 | Bug FR-03 về OTP không đủ 6 chữ số |
-| Low | 0 | Không ghi nhận |
-| Critical | 0 | Không ghi nhận |
+| FR-01 | 8 | Lỗi tập trung ở validation email/password, UI và HTML5 attributes |
+| FR-07 | 2 | Lỗi hành vi thêm sản phẩm trùng và hiển thị định dạng tiền/tổng cộng |
+| FR-12 | 0 | Chưa ghi nhận bug chính thức trong summary |
+| FR-MOB | 0 | Chưa ghi nhận bug chính thức trong summary |
+| **Tổng** | **10** |  |
 
-### 4.3 Bug coverage theo yêu cầu vi phạm
+### 4.2 Bug candidate từ issue tracker (pending triage)
 
-| Bug ID | Feature | Requirement vi phạm | Severity | Test case liên quan |
-| --- | --- | --- | --- | --- |
-| BUG-01 | FR-03 - Quên mật khẩu & Đặt lại mật khẩu | FR-03: OTP phải là 6 chữ số | Medium | TC-01 |
-| BUG-02 | FR-03 - Quên mật khẩu & Đặt lại mật khẩu | FR-03, FR-01: mật khẩu mới phải mạnh | High | TC-06 |
-| BUG-01 | FR-10 - Trạng thái Đơn hàng | FR-10: shipping không được user hủy | High | TC-06 |
-| BUG-02 | FR-10 - Trạng thái Đơn hàng | FR-10: canceled là trạng thái kết thúc | High | TC-08 |
+Ảnh issue tracker ghi nhận 13 issue mở, gồm các nhóm:
+
+- FR-01: 8 issue
+- FR-07: 2 issue
+- FR-12: 1 issue
+- FR-MOB: 2 issue
+
+Các issue này cần được đối chiếu ngược vào execution table trước khi chuẩn hóa lại số bug chính thức của báo cáo.
 
 ## 5. Kết Luận
 
-- Bộ testcase hiện có bao phủ 3 feature / requirement và 3 kỹ thuật thiết kế khác nhau.
-- Tổng cộng 25 testcase, trong đó 9 testcase Pass, 4 testcase Failed và 12 testcase Not executed.
-- Đã xác nhận 4 bug, tập trung vào FR-03 và FR-10.
-- Các bug report có số hiệu cục bộ theo từng folder, nên cần đọc kèm testcase liên quan để tránh nhầm BUG-01 / BUG-02 giữa FR-03 và FR-10.
-- FR-09 hiện chưa ghi nhận bug trong bộ tài liệu tổng hợp này.
+- Bộ bài Domain Testing hiện bao phủ 4 feature với 57 test case được thiết kế.
+- Theo số liệu chính thức, đã thực thi 38/57 case, ghi nhận 10 bug xác nhận.
+- Issue tracker cho thấy thêm các bug candidate (13 issue mở), phản ánh nhu cầu làm bước triage và đồng bộ dữ liệu test execution trước khi chốt số liệu cuối cùng.
